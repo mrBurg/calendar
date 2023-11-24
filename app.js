@@ -14,7 +14,7 @@ const port = process.env.PORT || 3001;
 
 const app = express();
 
-const server = app.listen(443, (a, b, c, d) => {
+const server = app.listen(port, (a, b, c, d) => {
   console.log(port);
   console.log(a, b, c, d);
   console.log(`Example app listening on port ${port}!`);
