@@ -1,6 +1,6 @@
-// const https = require('https');
-const http = require('http');
 const express = require('express');
+
+const port = process.env.PORT;
 
 const html = `
 <!DOCTYPE html>
@@ -53,17 +53,9 @@ const html = `
 </html>
 `;
 
-const serverCallback = ((err) => (protocol, host, port) => {
-  if (err) {
-    throw err;
-  }
-
-  console.log(
-    `\x1b[92m${protocol} App ready on =>\n  host -> [\x1b[102m\x1b[30m ${host} \x1b[0m\x1b[92m]\n  port -> :[\x1b[102m\x1b[30m ${port} \x1b[0m\x1b[92m]\n\x1b[0m`
-  );
-})();
-
 const app = express();
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 app.get('/', (req, res) => {
   res.type('html').send(html);
@@ -72,18 +64,3 @@ app.get('/', (req, res) => {
     port,
   }); */
 });
-
-const httpServer = http.createServer(/* { maxHeaderSize: 64555 }, */ app);
-
-httpServer.listen(80, serverCallback('HTTP', 'http://localhost', 80));
-
-// const httpsServer = https.createServer(
-//   {
-//     // key: readFileSync(certificate.key, { encoding: certificate.encoding }),
-//     // cert: readFileSync(certificate.cert, { encoding: certificate.encoding }),
-//     // maxHeaderSize: 64555,
-//   },
-//   app
-// );
-
-// httpsServer.listen(443, serverCallback('HTTPS', 'http://localhost', 443));
