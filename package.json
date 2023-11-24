@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/mrBurg/calendar/issues"
   },
-  "homepage": "https://github.com/mrBurg/calendar#readme",
+  "homepage": "https://calendar-3kge.onrender.com",
   "dependencies": {
     "express": "^4.18.2"
   }
