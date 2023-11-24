@@ -22,7 +22,33 @@ app
         links: [
           {
             rel: 'stylesheet',
+            href: '/styles/vendors/jquery-ui.structure.min.css',
+          },
+          {
+            rel: 'stylesheet',
+            href: '/styles/vendors/jquery-ui.theme.min.css',
+          },
+          {
+            rel: 'stylesheet',
+            href: '/styles/vendors/jquery-ui.min.css',
+          },
+          {
+            rel: 'stylesheet',
             href: '/styles/index.css',
+          },
+        ],
+        scripts: [
+          {
+            type: 'text/javascript',
+            src: '/scripts/vendors/jquery-3.7.1.min.js',
+          },
+          {
+            type: 'text/javascript',
+            src: '/scripts/vendors/jquery-ui.min.js',
+          },
+          {
+            type: 'text/javascript',
+            src: '/scripts/index.js',
           },
         ],
       },

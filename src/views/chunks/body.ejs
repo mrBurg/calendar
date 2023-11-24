@@ -1,5 +1,6 @@
-<% const env = 'dev'; %>
-
 <body>
   <%- include('./content') %>
+  <% data.scripts.forEach((item) => { %>
+  <script type="<%= item.type %>" src="<%= item.src %>"></script>
+  <% }) %>
 </body>
