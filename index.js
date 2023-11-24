@@ -14,13 +14,17 @@ app
   .use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
   .set('views', path.join(__dirname, 'src', 'views'))
   .set('view engine', '.ejs')
-  .get('/api/currentDate', (_req, res) => res.send(new Date()))
+  .get('/api/currentDate', (_req, res) => res.send(JSON.stringify(Date.now())))
   .use('/', (_req, res) =>
     res.render('./', {
       lang: 'en',
       data: {
         title: 'Calendar',
         links: [
+          {
+            rel: 'stylesheet',
+            href: '/styles/vendors/normalize.css',
+          },
           {
             rel: 'stylesheet',
             href: '/styles/vendors/jquery-ui.structure.min.css',

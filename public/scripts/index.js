@@ -2,6 +2,7 @@ const req = new XMLHttpRequest();
 
 function reqListener() {
   console.log(this.responseText);
+  console.log(Date.now());
 }
 
 req.addEventListener('load', reqListener);

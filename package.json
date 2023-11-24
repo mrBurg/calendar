@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "sass": "sass --watch src/scss/index.scss public/styles/index.css",
+    "sass": "sass src/scss/index.scss public/styles/index.css",
+    "sass:watch": "sass --watch src/scss/index.scss public/styles/index.css",
+    "css:build": "sass src/scss/index.scss public/styles/index.css && postcss public/styles/index.css -o public/styles/index.css",
+    "css:watch": "yarn css:build && postcss --watch public/styles/index.css -o public/styles/index.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
