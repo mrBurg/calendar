@@ -1,15 +1,49 @@
 const express = require('express');
+
+const port = process.env.PORT || 443;
+
+/* const serverCallback = ((err) => (protocol, host, port) => {
+  if (err) {
+    throw err;
+  }
+
+  console.log(
+    `\x1b[92m${protocol} App ready on =>\n  host -> [\x1b[102m\x1b[30m ${host} \x1b[0m\x1b[92m]\n  port -> :[\x1b[102m\x1b[30m ${port} \x1b[0m\x1b[92m]\n\x1b[0m`
+  );
+})(); */
+
 const app = express();
-const port = process.env.PORT || 3001;
+
+const server = app.listen(443, (a, b, c, d) => {
+  console.log(port);
+  console.log(a, b, c, d);
+  console.log(`Example app listening on port ${port}!`);
+});
+
+// const httpServer = http.createServer(/* { maxHeaderSize: 64555 }, */ server);
+
+/* httpServer.listen(
+  HTTP_PORT,
+  serverCallback(PROTOCOL.HTTP, HTTP_SERVER_HOST, HTTP_PORT)
+); */
+
+/* const httpsServer = https.createServer(
+  {
+    key: readFileSync(certificate.key, { encoding: certificate.encoding }),
+    cert: readFileSync(certificate.cert, { encoding: certificate.encoding }),
+    maxHeaderSize: 64555,
+  },
+  server
+); */
 
 app.get('/', (req, res) => res.type('html').send(html));
 
-const server = app.listen(port, () =>
+/* const server = app.listen(port, () =>
   console.log(`Example app listening on port ${port}!`)
-);
+); */
 
-server.keepAliveTimeout = 120 * 1000;
-server.headersTimeout = 120 * 1000;
+// server.keepAliveTimeout = 120 * 1000;
+// server.headersTimeout = 120 * 1000;
 
 const html = `
 <!DOCTYPE html>
