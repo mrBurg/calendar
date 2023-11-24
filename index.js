@@ -17,8 +17,14 @@ app
   .use('/', (_req, res) =>
     res.render('./', {
       lang: 'en',
-      domData: {
+      data: {
         title: 'Calendar',
+        links: [
+          {
+            rel: 'stylesheet',
+            href: '/styles/index.css',
+          },
+        ],
       },
     })
   );
