@@ -1,4 +1,4 @@
-const https = require('https');
+// const https = require('https');
 const http = require('http');
 const express = require('express');
 
@@ -77,13 +77,13 @@ const httpServer = http.createServer(/* { maxHeaderSize: 64555 }, */ app);
 
 httpServer.listen(80, serverCallback('HTTP', 'http://localhost', 80));
 
-const httpsServer = https.createServer(
-  {
-    // key: readFileSync(certificate.key, { encoding: certificate.encoding }),
-    // cert: readFileSync(certificate.cert, { encoding: certificate.encoding }),
-    // maxHeaderSize: 64555,
-  },
-  app
-);
+// const httpsServer = https.createServer(
+//   {
+//     // key: readFileSync(certificate.key, { encoding: certificate.encoding }),
+//     // cert: readFileSync(certificate.cert, { encoding: certificate.encoding }),
+//     // maxHeaderSize: 64555,
+//   },
+//   app
+// );
 
-httpsServer.listen(443, serverCallback('HTTPS', 'http://localhost', 443));
+// httpsServer.listen(443, serverCallback('HTTPS', 'http://localhost', 443));
