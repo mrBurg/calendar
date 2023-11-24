@@ -14,6 +14,7 @@ app
   .use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
   .set('views', path.join(__dirname, 'src', 'views'))
   .set('view engine', '.ejs')
+  .get('/api/currentDate', (_req, res) => res.send(new Date()))
   .use('/', (_req, res) =>
     res.render('./', {
       lang: 'en',
