@@ -8,7 +8,7 @@ function reqListener() {
 req.addEventListener('load', reqListener);
 
 function ready() {
-  req.open('GET', 'http://localhost:443/api/currentDate');
+  req.open('GET', '/api/currentDate');
   req.send();
 
   // $('#datepicker').datepicker();
