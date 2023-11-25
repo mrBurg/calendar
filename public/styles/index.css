@@ -13,11 +13,14 @@ main {
   flex-direction: column;
 }
 
-.content {
-  display: flex;
+.title {
+  text-align: center;
 }
-.content__item {
-  flex-grow: 1;
+
+button[type=button] {
+  cursor: pointer;
+  display: block;
+  margin: 1em auto auto;
 }
 
 /*# sourceMappingURL=index.css.map */

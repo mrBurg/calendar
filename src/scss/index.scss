@@ -13,10 +13,12 @@ main {
   flex-direction: column;
 }
 
-.content {
-  display: flex;
+.title {
+  text-align: center;
+}
 
-  &__item {
-    flex-grow: 1;
-  }
+button[type='button'] {
+  cursor: pointer;
+  display: block;
+  margin: 1em auto auto;
 }

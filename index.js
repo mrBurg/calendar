@@ -2,19 +2,28 @@ const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
 const favicon = require('serve-favicon');
+var bodyParser = require('body-parser');
 
 dotenv.config({ path: './.env' });
 
 const port = process.env.PORT;
-
 const app = express();
+
+let currentDate = Date.now();
 
 app
   .use(express.static(path.resolve(path.join(__dirname, 'public'))))
   .use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+  .use(bodyParser.json())
+  .use(bodyParser.urlencoded({ extended: true }))
   .set('views', path.join(__dirname, 'src', 'views'))
   .set('view engine', '.ejs')
-  .get('/api/currentDate', (_req, res) => res.send(JSON.stringify(Date.now())))
+  .get('/api/get-date', (_req, res) => res.send(JSON.stringify(currentDate)))
+  .post('/api/save-date', (req, res) => {
+    currentDate = Number(req.body.date);
+
+    res.end();
+  })
   .use('/', (_req, res) =>
     res.render('./', {
       lang: 'en',

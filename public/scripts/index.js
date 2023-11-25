@@ -1,17 +1,30 @@
-const req = new XMLHttpRequest();
-
-function reqListener() {
-  console.log(this.responseText);
-  console.log(Date.now());
-}
-
-req.addEventListener('load', reqListener);
-
 function ready() {
-  req.open('GET', '/api/currentDate');
-  req.send();
+  const container = $('#container');
+  const buttonHolder = $('#button-holder')[0].content.cloneNode(true);
+  const calendarHolder = $('#calendar-holder')[0].content.cloneNode(true);
 
-  // $('#datepicker').datepicker();
+  const getButton = $('#get-button', buttonHolder);
+  const saveButton = $('#save-button', calendarHolder);
+  const reloadButton = $('#reload-button', calendarHolder);
+
+  getButton.click(() =>
+    $.get('/api/get-date', (data) => {
+      container.empty().append(calendarHolder);
+
+      $('#calendar')
+        .datepicker()
+        .datepicker('setDate', new Date(Number(data)));
+    })
+  );
+
+  saveButton.click(() => {
+    const currentDate = $('#calendar').datepicker('getDate');
+
+    $.post('/api/save-date', { date: currentDate.getTime() });
+  });
+
+  reloadButton.click(() => window.location.reload());
+  container.append(buttonHolder);
 }
 
 document.addEventListener('DOMContentLoaded', ready);
