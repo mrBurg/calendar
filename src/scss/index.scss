@@ -1,3 +1,5 @@
+$grey: #b7b7b7;
+
 html,
 body {
   display: flex;
@@ -11,10 +13,18 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.title {
+.title,
+.sub-title {
   text-align: center;
+}
+
+.sub-title {
+  span {
+    color: $grey;
+  }
 }
 
 button[type='button'] {

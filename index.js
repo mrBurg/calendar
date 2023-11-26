@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 const favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
+var moment = require('moment');
 
 dotenv.config({ path: './.env' });
 
@@ -18,6 +19,9 @@ app
   .use(bodyParser.urlencoded({ extended: true }))
   .set('views', path.join(__dirname, 'src', 'views'))
   .set('view engine', '.ejs')
+  .get('/api/get-current-date', (_req, res) =>
+    res.send(JSON.stringify(moment().format('MMMM Do YYYY, h:mm:ss a')))
+  )
   .get('/api/get-date', (_req, res) => res.send(JSON.stringify(currentDate)))
   .post('/api/save-date', (req, res) => {
     currentDate = Number(req.body.date);

@@ -1,3 +1,5 @@
+let xhr = new XMLHttpRequest();
+
 function ready() {
   const container = $('#container');
   const buttonHolder = $('#button-holder')[0].content.cloneNode(true);
@@ -6,6 +8,12 @@ function ready() {
   const getButton = $('#get-button', buttonHolder);
   const saveButton = $('#save-button', calendarHolder);
   const reloadButton = $('#reload-button', calendarHolder);
+
+  xhr.addEventListener('load', () => {
+    document.getElementById(
+      'current-date'
+    ).innerHTML = `<span>Current date is</span> ${xhr.response}`;
+  });
 
   getButton.click(() =>
     $.get('/api/get-date', (data) => {
@@ -24,6 +32,10 @@ function ready() {
   });
 
   reloadButton.click(() => window.location.reload());
+
+  xhr.open('GET', '/api/get-current-date');
+  xhr.send();
+
   container.append(buttonHolder);
 }
 
